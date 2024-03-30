@@ -1,0 +1,25 @@
+<<<<<<< HEAD
+def fun():
+    first = 'A'
+    second = 'B'
+    return first,second
+
+for data in range(0,len(fun())):
+    a = fun()[0]
+    b = fun()[1]
+    break
+    
+print(a,b)
+=======
+def fun():
+    first = 'A'
+    second = 'B'
+    return first,second
+
+for data in range(0,len(fun())):
+    a = fun()[0]
+    b = fun()[1]
+    break
+    
+print(a,b)
+>>>>>>> e78cca91de3d6e4d28209504d3bc59952e1b95b2
