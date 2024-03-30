@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Select</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="icon" href="{% static 'images/A-logo.png' %}">
+</head>
+<body>
+
+    <div class="top-div">
+        <a href="{% url 'HomePage' %}"><img class="Logo" src="{% static 'images/Logo.png' %}"></a>
+        <p>HOME <br> WORKOUT</p>
+    </div>
+
+    <img class="Backward" data-selected="0" onclick="Backward()" src="{% static 'images/backarrow.png' %}">
+    <div class="main-div">
+        <h1>What's your gender?</h1>
+        <h3>Let us know better.</h3>
+        <div class="main-img-div">
+            <div>
+                <img class="gender-img1" data-selected="false" src="{% static 'images/Men.png' %}" onclick="genderImgChange(1)">
+                <span>Men</span>
+            </div>
+            <div>
+                <img class="gender-img2" data-selected="false" src="{% static 'images/Women.png' %}" onclick="genderImgChange(2)">
+                <span>Women</span>
+            </div>
+        </div>
+        <button value="false" class="gender-select-button" onclick="genderSelected()">Next</button>
+    </div>
+
+    <div class="select-level">
+        <a href="{% url 'HomePage' %}" id="skipbutton">Skip</a>
+        <h1>How many push-ups can you do at one time?</h1>
+        <button class="level-btn1" onclick="LevelButtonSelect(1)"><img class="level-emoji1" src="{% static 'images/level-1.png' %}"><span id="title">Beginner<br><span id="title2">3-5 push-ups</span></span><img class="level-tick-img" src="{% static 'images/tick-mark.png' %}"></button>
+        <button class="level-btn2" onclick="LevelButtonSelect(2)"><img class="level-emoji2" src="{% static 'images/level-2.png' %}"><span id="title">Intermediate<br><span id="title2">5-10 push-ups</span></span><img class="level-tick-img" src="{% static 'images/tick-mark.png' %}"></button>
+        <button class="level-btn3" onclick="LevelButtonSelect(3)"><img class="level-emoji3" src="{% static 'images/level-3.png' %}"><span id="title">Advanced<br><span id="title2">Morethan 10 push-ups</span></span><img class="level-tick-img" src="{% static 'images/tick-mark.png' %}"></button>
+        <button class="level-btn" value="false" onclick="levelSubmit()">Next</button>
+    </div>
+
+    <div class="measurements-div">
+        <a href="{% url 'HomePage' %}" id="skipbutton2">Skip</a>
+        <h1>Let us know you better</h1>
+        <div class="weight-div">
+            <span>Weight</span>
+            <div class="measurement-button-div1">
+                <input type="text" oninput="Measurementbtn()">
+                <div class="inner-weight-div">
+                    <button class="kg-btn" onclick="measurementKeys('kg')">kg</button>
+                    <button class="lb-btn" onclick="measurementKeys('lb')">lb</button>
+                </div>
+            </div>
+        </div>
+        <div class="height-div">
+            <span>Height</span>
+            <div class="measurement-button-div2">
+                <input type="text" oninput="Measurementbtn()">
+                <div class="inner-height-div">
+                    <button class="cm-btn" onclick="measurementKeys('cm')">cm</button>
+                    <button class="ft-btn" onclick="measurementKeys('ft')">ft</button>
+                </div>
+            </div>
+        </div>
+        <a href="{% url 'HomePage' %}" class="measurements-submit-btn">Let's Begin</a>
+    </div>
+
+
+<script>
+    const staticUrl = "{% static '' %}";
+</script>
+<script src="{% static 'js/index1.js' %}"></script>
+</body>
+</html>
