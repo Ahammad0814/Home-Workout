@@ -9,63 +9,101 @@ from itertools import chain
 def get_main_data(request):
     # Beginner Object
     if request.resolver_match.url_name == 'BeginnerAbsPage':
-        Main = BeginnersAbs.objects.all()
+        Data = BeginnersAbs.objects.all()
+        Final_Data = list(chain(Data[:7], Data[1:]))
+        Main = Final_Data
         Name = 'ABS BEGINNER'
     elif request.resolver_match.url_name == 'BeginnerChestPage':
-        Main = BeginnersChest.objects.all()
+        FirstData = BeginnersAbs.objects.all()
+        Data = BeginnersChest.objects.all()
+        Final_Data = list(chain(FirstData[:1], Data[:4], Data[:4], Data[4:]))
+        Main = Final_Data
         Name = 'CHEST BEGINNER'
     elif request.resolver_match.url_name == 'BeginnerArmPage':
-        Main = BeginnersArm.objects.all()
+        Data1 = BeginnersArm.objects.all()
+        Data2 = IntermediateArm.objects.all()
+        Final_Data = list(chain(Data1[:9], Data2[:4], Data1[9:]))
+        Main = Final_Data
         Name = 'ARM BEGINNER'
     elif request.resolver_match.url_name == 'BeginnerBackPage':
-        Main = BeginnersBack.objects.all()
+        FirstData = BeginnersArm.objects.all()
+        Data1 = BeginnersBack.objects.all()
+        Data2 = IntermediateBack.objects.all()
+        Final_Data = list(chain(FirstData[:1], Data1, Data2[1:2], Data1[1:4], Data1[7:], Data2[8:9]))
+        Main = Final_Data
         Name = 'SHOULDER & BACK BEGINNER'
     elif request.resolver_match.url_name == 'BeginnerLegPage':
         Main = BeginnersLeg.objects.all()
         Name = 'LEG BEGINNER'
+        
     # Intermediate Object
+    
     elif request.resolver_match.url_name == 'IntermediateAbsPage':
-        Main = IntermediateAbs.objects.all()
+        FirstData = BeginnersAbs.objects.all()
+        Data = IntermediateAbs.objects.all()
+        Final_Data = list(chain(FirstData[:1], Data[:5], FirstData[1:7], Data, FirstData[7:]))
+        Main = Final_Data
         Name = 'ABS INTERMEDIATE'
     elif request.resolver_match.url_name == 'IntermediateChestPage':
-        Main = IntermediateChest.objects.all()
+        FirstData = BeginnersAbs.objects.all()
+        Data1 = BeginnersChest.objects.all()
+        Data2 = IntermediateChest.objects.all()
+        Final_Data = list(chain(FirstData[:1], Data1[:4], Data2[:4], Data2[:2], Data2[4:], Data1[4:]))
+        Main = Final_Data
         Name = 'CHEST INTERMEDIATE'
     elif request.resolver_match.url_name == 'IntermediateArmPage':
-        Main = IntermediateArm.objects.all()
+        FirstData = BeginnersAbs.objects.all()
+        Data1 = BeginnersArm.objects.all()
+        Data2 = IntermediateArm.objects.all()
+        Final_Data = list(chain(FirstData[:1], Data1[:9], Data2, Data2[:2], Data1[9:]))
+        Main = Final_Data
         Name = 'ARM INTERMEDIATE'
     elif request.resolver_match.url_name == 'IntermediateBackPage':
-        Main = IntermediateBack.objects.all()
+        FirstData = BeginnersAbs.objects.all()
+        Data1 = BeginnersBack.objects.all()
+        Data2 = IntermediateBack.objects.all()
+        Final_Data = list(chain(FirstData[:1], Data1[:1], Data1[2:6], Data1[7:], Data2))
+        Main = Final_Data
         Name = 'SHOULDER & BACK INTERMEDIATE'
     elif request.resolver_match.url_name == 'IntermediateLegPage':
         I_Data = BeginnersLeg.objects.all()
         A_Data = IntermediateLeg.objects.all()
-        I_Data1 = I_Data[:7]
-        I_Data2 = I_Data[7:]
-        A_Data1 = A_Data[:1]
-        A_Data2 = A_Data[1:]
-        Main = list(chain(A_Data1, I_Data1, A_Data2, I_Data2))
+        Main = list(chain(A_Data[:1], I_Data[:7], A_Data[1:], I_Data[7:]))
         Name = 'LEG INTERMEDIATE'
+        
     #Advanced Object
+    
     elif request.resolver_match.url_name == 'AdvancedAbsPage':
-        Main = IntermediateAbs.objects.all()
+        FirstData = BeginnersAbs.objects.all()
+        Data = IntermediateAbs.objects.all()
+        Final_Data = list(chain(FirstData[:1], Data[:5], FirstData[1:7], Data, FirstData[7:]))
+        Main = Final_Data
         Name = 'ABS ADVANCED'
     elif request.resolver_match.url_name == 'AdvancedChestPage':
-        Main = IntermediateChest.objects.all()
+        FirstData = BeginnersAbs.objects.all()
+        Data1 = BeginnersChest.objects.all()
+        Data2 = IntermediateChest.objects.all()
+        Final_Data = list(chain(FirstData[:1], Data1[:4], Data2[:4], Data2[:2], Data2[4:], Data1[4:]))
+        Main = Final_Data
         Name = 'CHEST ADVANCED'
     elif request.resolver_match.url_name == 'AdvancedArmPage':
-        Main = IntermediateArm.objects.all()
+        FirstData = BeginnersAbs.objects.all()
+        Data1 = BeginnersArm.objects.all()
+        Data2 = IntermediateArm.objects.all()
+        Final_Data = list(chain(FirstData[:1], Data1[:9], Data2, Data2[:2], Data1[9:]))
+        Main = Final_Data
         Name = 'ARM ADVANCED'
     elif request.resolver_match.url_name == 'AdvancedBackPage':
-        Main = IntermediateBack.objects.all()
+        FirstData = BeginnersAbs.objects.all()
+        Data1 = BeginnersBack.objects.all()
+        Data2 = IntermediateBack.objects.all()
+        Final_Data = list(chain(FirstData[:1], Data1[:1], Data1[2:6], Data1[7:], Data2))
+        Main = Final_Data
         Name = 'SHOULDER & BACK ADVANCED'
     elif request.resolver_match.url_name == 'AdvancedLegPage':
         I_Data = BeginnersLeg.objects.all()
         A_Data = IntermediateLeg.objects.all()
-        I_Data1 = I_Data[:7]
-        I_Data2 = I_Data[7:]
-        A_Data1 = A_Data[:1]
-        A_Data2 = A_Data[1:]
-        Final_Data = list(chain(A_Data1, I_Data1, A_Data2, I_Data2))
+        Final_Data = list(chain(A_Data[:1], I_Data[:7], A_Data[1:], I_Data[7:]))
         Main = list(chain(Final_Data[:2], Final_Data[2:20], Final_Data[2:20], Final_Data[20:]))
         Name = 'LEG ADVANCED'
     return Main,Name
